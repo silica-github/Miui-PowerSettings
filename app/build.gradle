@@ -1,0 +1,33 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion "27.0.0"
+    defaultConfig {
+        applicationId "kazumi.miui.power"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    signingConfigs {
+        suzukaze {
+            keyAlias 'SUZUKAZE'
+            keyPassword 'SUZUKAZE'
+            storeFile file('/resources/keystore.jks')
+            storePassword 'SUZUKAZE'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.suzukaze
+        }
+    }
+}
+
+dependencies {
+}
